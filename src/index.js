@@ -52,11 +52,13 @@ export default class index extends React.Component {
 	}
 
 	handleNodeStart(nid) {
-		this.props.onNodeStartMove(nid);
+		const {onNodeStartMove} = this.props;
+		return typeof onNodeStartMove === 'function' ? onNodeStartMove(nid) : null;
 	}
 
 	handleNodeStop(nid, pos) {
-		this.props.onNodeMove(nid, pos);
+		const {onNodeMove} = this.props;
+		return typeof onNodeMove === 'function' ? onNodeMove(nid, pos) : null;
 	}
 
 	handleNodeMove(index, pos) {
